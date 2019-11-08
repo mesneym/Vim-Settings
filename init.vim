@@ -59,7 +59,7 @@ let g:ctrlp_working_path_mode = 'rw'
 "_____________________________________
 "       vim - Hardtime
 "_____________________________________
-let g:hardtime_default_on = 1
+let g:hardtime_default_on = 0
 
 "_____________________________________
 "              NERD TREE 
