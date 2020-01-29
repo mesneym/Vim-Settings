@@ -20,7 +20,9 @@ Plug 'timakro/vim-searchant'
 Plug 'joshdick/onedark.vim'
 Plug 'neomake/neomake'
 Plug 'lervag/vimtex'
-Plug '907th/vim-auto-save'
+Plug 'daeyun/vim-matlab' 
+Plug 'tpope/vim-surround'
+"Plug '907th/vim-auto-save'
 "Plug 'terryma/vim-multiple-cursors'
 "Plug 'takac/vim-hardtime'
 call plug#end()
@@ -55,6 +57,13 @@ let g:auto_save_events = ["InsertLeave", "TextChanged"]
 let g:auto_save_silent = 1 
 
 "_______________________________
+"      AutoPairs
+"________________________________
+let g:AutoPairsShortcutFastWrap = '<A-e>'
+
+
+
+"_______________________________
 "         CTRLP
 "________________________________         
 let g:ctrlp_working_path_mode = 'rw'
@@ -81,32 +90,32 @@ nnoremap <C-n> :NERDTree `pwd`<CR>
 "______________________________________
 "              Gruvbox
 "______________________________________
-set background=dark
-let g:gruvbox_contrast_dark="hard"
+"set background=dark
+"let g:gruvbox_contrast_dark="hard"
 "set background=light
 "let g:gruvbox_contrast_light ='hard'
-let g:gruvbox_italic = 1 
-let g:gruvbox_improved_warnigns = 1
-colorscheme gruvbox
+"let g:gruvbox_italic = 1 
+"let g:gruvbox_improved_warnigns = 1
+"colorscheme gruvbox
 
 "_____________________________________
 "             One Dark
 "_____________________________________
 "syntax on
-"colorscheme onedark
-"let g:lightline = {
-  "\ 'colorscheme': 'onedark',
-  "\ }
+colorscheme onedark
+let g:lightline = {
+  \ 'colorscheme': 'onedark',
+  \ }
 
-"hi Pmenu ctermfg=0 ctermbg=6 guibg=#444444
-"hi PmenuSel ctermfg=7 ctermbg=4 guibg=#555555 guifg=#ffffff
+hi Pmenu ctermfg=0 ctermbg=6 guibg=#444444
+hi PmenuSel ctermfg=7 ctermbg=4 guibg=#555555 guifg=#ffffff
 
 "_____________________________________
 "             Vim Airline
 "_____________________________________
 let g:airline_powerline_fonts=1
-"let g:airline_theme='onedark'
-let g:airline_theme='gruvbox'
+let g:airline_theme='onedark'
+"let g:airline_theme='gruvbox'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 0
 let g:airline#extensions#tabline#show_tabs = 1
@@ -116,12 +125,13 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 "______________________________________
 "autocmd InsertChange,TextChanged * update | Neomake
 
-autocmd BufWritePost,BufEnter * Neomake
-let g:neomake_cpp_enabled_makers = ['gcc', 'cppcheck', 'cpplint']
-let g:neomake_cpp_gcc_maker = {
-\ 'exe': 'g++',
-\ 'args': ['-Wall', '-Iinclude', '-Wextra', '-std=c++11'],
-\ }
+"autocmd BufWritePost,BufEnter * Neomake
+"let g:neomake_cpp_enabled_makers = ['gcc', 'cppcheck', 'cpplint']
+"let g:neomake_cpp_gcc_maker = {
+"\ 'exe': 'g++',
+"\ 'args': ['-Wall', '-Iinclude', '-Wextra', '-std=c++11'],
+"\ }
+
 nnoremap  <space>p :lprev<cr>
 nnoremap  <space>n :lnext<cr>
 nnoremap  <space>a :lopen<cr>
@@ -137,14 +147,15 @@ set nobackup  "some servers have issues with backup"
 set nowritebackup
 set hidden   "if hidden is not set, Text edit might fail"
 
-
 inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : "<TAB>"
 inoremap <silent><expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
 
-"nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
-"nmap <silent> <space>p  <Plug>(coc-diagnostic-prev)
-"nmap <silent> <space>n  <Plug>(coc-diagnostic-next)
+
+nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+nmap <silent> <space>p  <Plug>(coc-diagnostic-prev)
+nmap <silent> <space>n  <Plug>(coc-diagnostic-next)
+
 
 command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 command! -nargs=0 Format :call CocAction('format')
@@ -159,8 +170,6 @@ xmap <silent> <space>fm  <Plug>(coc-format-selected)
 nmap <silent> <space>fm  <Plug>(coc-format-selected)
 nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
 nnoremap <silent> <space>fd :Fold <cr>
-
-
 
 "______________________________________
 "           Multiple Cursors
@@ -225,3 +234,4 @@ tnoremap <C-l> <C-\><C-N><C-w>l
 tnoremap <C-h> <C-\><C-N><C-w>h
 tnoremap <C-k> <C-\><C-N><C-w>k
 tnoremap <C-j> <C-\><C-N><C-w>j
+autocmd FileType python nnoremap <buffer> <F5>  :w<CR>:!python % <CR>
