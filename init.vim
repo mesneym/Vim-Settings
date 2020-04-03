@@ -1,4 +1,5 @@
 "###########################################################################################
+"
 "											PLUGINS
 "############################################################################################
 call plug#begin()
@@ -90,32 +91,32 @@ nnoremap <C-n> :NERDTree `pwd`<CR>
 "______________________________________
 "              Gruvbox
 "______________________________________
-"set background=dark
-"let g:gruvbox_contrast_dark="hard"
+set background=dark
+let g:gruvbox_contrast_dark="hard"
 "set background=light
 "let g:gruvbox_contrast_light ='hard'
-"let g:gruvbox_italic = 1 
-"let g:gruvbox_improved_warnigns = 1
-"colorscheme gruvbox
+let g:gruvbox_italic = 1 
+let g:gruvbox_improved_warnigns = 1
+colorscheme gruvbox
 
 "_____________________________________
 "             One Dark
 "_____________________________________
 "syntax on
-colorscheme onedark
-let g:lightline = {
-  \ 'colorscheme': 'onedark',
-  \ }
+"colorscheme onedark
+"let g:lightline = {
+  "\ 'colorscheme': 'onedark',
+  "\ }
 
-hi Pmenu ctermfg=0 ctermbg=6 guibg=#444444
-hi PmenuSel ctermfg=7 ctermbg=4 guibg=#555555 guifg=#ffffff
+"hi Pmenu ctermfg=0 ctermbg=6 guibg=#444444
+"hi PmenuSel ctermfg=7 ctermbg=4 guibg=#555555 guifg=#ffffff
 
 "_____________________________________
 "             Vim Airline
 "_____________________________________
 let g:airline_powerline_fonts=1
-let g:airline_theme='onedark'
-"let g:airline_theme='gruvbox'
+"let g:airline_theme='onedark'
+let g:airline_theme='gruvbox'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 0
 let g:airline#extensions#tabline#show_tabs = 1
@@ -234,4 +235,10 @@ tnoremap <C-l> <C-\><C-N><C-w>l
 tnoremap <C-h> <C-\><C-N><C-w>h
 tnoremap <C-k> <C-\><C-N><C-w>k
 tnoremap <C-j> <C-\><C-N><C-w>j
+nmap     <leader>mt  o<ESC>k,ttjk,vt<C-k>,tt<c-k>,fq<c-k>i
+nmap     <leader>dmt ,fq,fq,fq
+
+
+
 autocmd FileType python nnoremap <buffer> <F5>  :w<CR>:!python % <CR>
+
