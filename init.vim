@@ -23,6 +23,8 @@ Plug 'neomake/neomake'
 Plug 'lervag/vimtex'
 Plug 'daeyun/vim-matlab' 
 Plug 'tpope/vim-surround'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
+"Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 "Plug '907th/vim-auto-save'
 "Plug 'terryma/vim-multiple-cursors'
 "Plug 'takac/vim-hardtime'
@@ -62,7 +64,14 @@ let g:auto_save_silent = 1
 "________________________________
 let g:AutoPairsShortcutFastWrap = '<A-e>'
 
+"_______________________________
+"      Markdown
+"_______________________________
+let g:mkdp_auto_close = 1
+let g:mkdp_auto_start = 0
+let g:mkdp_refresh_slow = 1
 
+nmap \ma <Plug>MarkdownPreview
 
 "_______________________________
 "         CTRLP
@@ -91,9 +100,9 @@ nnoremap <C-n> :NERDTree `pwd`<CR>
 "______________________________________
 "              Gruvbox
 "______________________________________
-set background=dark
-let g:gruvbox_contrast_dark="hard"
-"set background=light
+"set background=dark
+"let g:gruvbox_contrast_dark="hard"
+set background=light
 "let g:gruvbox_contrast_light ='hard'
 let g:gruvbox_italic = 1 
 let g:gruvbox_improved_warnigns = 1
@@ -235,8 +244,8 @@ tnoremap <C-l> <C-\><C-N><C-w>l
 tnoremap <C-h> <C-\><C-N><C-w>h
 tnoremap <C-k> <C-\><C-N><C-w>k
 tnoremap <C-j> <C-\><C-N><C-w>j
-nmap     <leader>mt  o<ESC>k,ttjk,vt<C-k>,tt<c-k>,fq<c-k>i
-nmap     <leader>dmt ,fq,fq,fq
+nmap     <leader>mt  o<ESC>k,vtjk,vtjk<C-h><C-h>,fqi
+nmap     <leader>dmt ,fq,fq
 
 
 
