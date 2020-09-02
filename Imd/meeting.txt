@@ -1,0 +1,17 @@
+cmsc828I -  url       :https://umd.zoom.us/j/97333173693?pwd=OE5EWVZwcHBhcGViSTRJeXE5NWxpQT09 
+            meeting ID:973 3317 3693 
+            Passcode  :cat&dog
+            syllabus  :http://www.cs.umd.edu/class/fall2020/cmsc828i/#syllabus
+
+
+cmsc828U -  url      :https://umd.zoom.us/j/2742814228?pwd=MDI4NFRBZXhjNGlCc3RKUThCTTlDUT09 
+            passcode :4204
+
+
+cmsc818B -  url       : https://umd.zoom.us/j/97877660358   
+            passcode  : 383268
+            schedule  : https://docs.google.com/spreadsheets/d/1nVgOLriTfZQcolewX2LLshUYpp9bonA5T7W-pKR4X5I/edit?usp=sharing  
+            discussion: https://piazza.com/umd/fall2020/cmsc818b/home
+            Syllabus  : http://tokekar.com/teaching/CMSC818B-F20/index.html
+
+
