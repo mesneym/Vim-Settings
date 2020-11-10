@@ -8,6 +8,7 @@ call plug#begin()
 "			GENERAL
 "________________________________
 Plug 'jiangmiao/auto-pairs'
+Plug 'simeji/winresizer'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree' 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -20,6 +21,8 @@ Plug 'Shougo/neoinclude.vio'
 Plug 'timakro/vim-searchant'
 Plug 'joshdick/onedark.vim'
 Plug 'neomake/neomake'
+Plug 'camspiers/animate.vim'
+Plug 'camspiers/lens.vim'
 Plug 'lervag/vimtex'
 Plug 'daeyun/vim-matlab' 
 Plug 'tpope/vim-surround'
@@ -46,6 +49,7 @@ set mouse=a
 set relativenumber
 set splitright
 set splitbelow
+set nowrap
 
 
 "#############################################################################################
@@ -58,6 +62,23 @@ set splitbelow
 let g:auto_save = 1
 let g:auto_save_events = ["InsertLeave", "TextChanged"]
 let g:auto_save_silent = 1 
+
+"_______________________________
+"      Win Resizer
+"________________________________
+"let g:winresizer_start_key = '<C-e>'
+
+
+"_______________________________
+"      lens
+"________________________________
+nnoremap <leader>rs  :call lens#toggle() <CR>
+"let g:lens#disabled = 1
+let g:lens#height_resize_min = 10
+let g:lens#width_resize_min = 60
+let g:lens#height_resize_max = 30
+let g:lens#width_resize_max = 120
+let g:lens#disabled_filetypes = ['nerdtree', 'fzf']
 
 "_______________________________
 "      AutoPairs
@@ -101,8 +122,8 @@ nnoremap <C-n> :NERDTree `pwd`<CR>
 "              Gruvbox
 "______________________________________
 "set background=dark
-"let g:gruvbox_contrast_dark="hard"
-set background=light
+let g:gruvbox_contrast_dark="hard"
+"set background=light
 "let g:gruvbox_contrast_light ='hard'
 let g:gruvbox_italic = 1 
 let g:gruvbox_improved_warnigns = 1
@@ -248,6 +269,8 @@ nmap     <leader>mt  o<ESC>k,vtjk,vtjk<C-h><C-h>,fqi
 nmap     <leader>dmt ,fq,fq
 
 
-
 autocmd FileType python nnoremap <buffer> <F5>  :w<CR>:!python % <CR>
+
+
+
 
