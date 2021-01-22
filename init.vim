@@ -37,8 +37,8 @@ call plug#end()
 "#############################################################################################
 "					                   GENERAL OPTIONS	
 "#############################################################################################
-autocmd InsertEnter * :let @/=""
-autocmd InsertLeave * :let @/=""
+"autocmd InsertEnter * :let @/=""
+"autocmd InsertLeave * :let @/=""
 set number numberwidth=2
 set noswapfile
 set shiftwidth=2
@@ -192,11 +192,42 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 command! -nargs=0 Format :call CocAction('format')
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
+"Navigation
 nmap <silent> <space>gv :call CocAction('jumpDefinition', 'vsplit')<cr>
 nmap <silent> <space>gd <Plug>(coc-definition)
+nmap <silent> <space>gr <Plug>(coc-references)
 nmap  <space>gy <Plug>(coc-type-definition)
+
+"Documentation
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
+
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+
+" Map function and class text objects
+" NOTE: Requires 'textDocument.documentSymbol' support from the language server.
+xmap if <Plug>(coc-funcobj-i)
+omap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap af <Plug>(coc-funcobj-a)
+xmap ic <Plug>(coc-classobj-i)
+omap ic <Plug>(coc-classobj-i)
+xmap ac <Plug>(coc-classobj-a)
+omap ac <Plug>(coc-classobj-a)
+
+
 nmap <silent> <space>rn <Plug>(coc-rename)
-nmap <silent> <space>gi <Plug>(coc-implementation)
 xmap <silent> <space>fm  <Plug>(coc-format-selected)
 nmap <silent> <space>fm  <Plug>(coc-format-selected)
 nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
@@ -245,7 +276,7 @@ nnoremap    <leader>ev      :vsplit $MYVIMRC<CR>
 nnoremap    <leader>sv      :source $MYVIMRC<CR>
 inoremap    <leader>.       <ESC>$a
 nnoremap    <leader>.        A
-nnoremap    <leader>w        :w<CR>
+nnoremap    <leader>w        :wall<CR>
 nnoremap    <leader>fq       :q!<CR>
 nnoremap    gb               gT
 nnoremap    0                ^

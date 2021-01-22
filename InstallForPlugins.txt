@@ -29,3 +29,34 @@ echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/source
 
 sudo apt update
 sudo apt install yarn
+
+
+
+Coc setup
+--> 
+#install ccls
+sudo apt install snapd
+sudo snap install ccls --classic
+
+
+coc-config
+{
+"languageserver": {
+  "ccls": {
+    "command": "ccls",
+    "filetypes": ["c", "cc", "cpp", "c++", "objc", "objcpp"],
+    "rootPatterns": [".ccls", "compile_commands.json", ".git/", ".hg/"],
+    "initializationOptions": {
+        "cache": {
+          "directory": "/tmp/ccls"
+        }
+      }
+  }
+}
+}
+
+
+
+
+
+
