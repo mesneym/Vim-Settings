@@ -32,6 +32,8 @@ Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-rooter'
 Plug 'mhinz/vim-startify'
 Plug 'justinmk/vim-sneak'
+Plug 'ryanoasis/vim-devicons'
+
 
 "Plug 'Shougo/neoinclude.vio'
 "Plug 'neomake/neomake'
@@ -108,6 +110,9 @@ autocmd FileType python nnoremap <buffer> <F5>  :w<CR>:!python % <CR>
 "#############################################################################################
 "                                GENERAL PLUGIN CONFIGURATION
 "#############################################################################################
+"_______________________________
+"      Vim-devicons
+"_______________________________
 
 "_______________________________
 "      Sneak
@@ -262,11 +267,12 @@ command! -bang -nargs=* GGrep
 let g:hardtime_default_on = 1
 
 "_____________________________________
-"              Nerd Tree 
+"        Coc Explorer / Nerd Tree 
 "_____________________________________
 "
-nnoremap <C-b> :NERDTreeToggle %<CR> 
-nnoremap <C-n> :NERDTree `pwd`<CR>
+"nnoremap <C-b> :NERDTreeToggle %<CR> 
+"nnoremap <C-n> :NERDTree `pwd`<CR>
+nnoremap <C-b> :CocCommand explorer<CR>
 
 
 "______________________________________
@@ -510,34 +516,34 @@ let g:which_key_map.s = {
 "                        GIT
 "_______________________________________________________________
 
-"let g:which_key_map.g = {
-      "\ 'name' : '+git' ,
-      "\ 'a' : [':Git add .'                        , 'add all'],
-      "\ 'A' : [':CocCommand fzf-preview.GitStatus' , 'actions'],
-      "\ 'b' : [':Git blame'                        , 'blame'],
-      "\ 'B' : [':GBrowse'                          , 'browse'],
-      "\ 'c' : [':Git commit'                       , 'commit'],
-      "\ 'd' : [':Git diff'                         , 'diff'],
-      "\ 'D' : [':Gdiffsplit'                       , 'diff split'],
-      "\ 'g' : [':GGrep'                            , 'git grep'],
-      "\ 'G' : [':Gstatus'                          , 'status'],
-      "\ 'h' : [':GitGutterLineHighlightsToggle'    , 'highlight hunks'],
-      "\ 'H' : ['<Plug>(GitGutterPreviewHunk)'      , 'preview hunk'],
-      "\ 'i' : [':Gist -b'                          , 'post gist'],
-      "\ 'j' : ['<Plug>(GitGutterNextHunk)'         , 'next hunk'],
-      "\ 'k' : ['<Plug>(GitGutterPrevHunk)'         , 'prev hunk'],
-      "\ 'l' : [':Git log'                          , 'log'],
-      "\ 'm' : ['<Plug>(git-messenger)'             , 'message'],
-      "\ 'p' : [':Git push'                         , 'push'],
-      "\ 'P' : [':Git pull'                         , 'pull'],
-      "\ 'r' : [':GRemove'                          , 'remove'],
-      "\ 's' : ['<Plug>(GitGutterStageHunk)'        , 'stage hunk'],
-      "\ 'S' : [':CocCommand fzf-preview.GitStatus' , 'status'],
-      "\ 't' : [':GitGutterSignsToggle'             , 'toggle signs'],
-      "\ 'u' : ['<Plug>(GitGutterUndoHunk)'         , 'undo hunk'],
-      "\ 'v' : [':GV'                               , 'view commits'],
-      "\ 'V' : [':GV!'                              , 'view buffer commits'],
-      "\ }
+let g:which_key_map.g = {
+      \ 'name' : '+git' ,
+      \ 'a' : [':Git add .'                        , 'add all'],
+      \ 'A' : [':CocCommand fzf-preview.GitStatus' , 'actions'],
+      \ 'b' : [':Git blame'                        , 'blame'],
+      \ 'B' : [':GBrowse'                          , 'browse'],
+      \ 'c' : [':Git commit'                       , 'commit'],
+      \ 'd' : [':Git diff'                         , 'diff'],
+      \ 'D' : [':Gdiffsplit'                       , 'diff split'],
+      \ 'g' : [':GGrep'                            , 'git grep'],
+      \ 'G' : [':Gstatus'                          , 'status'],
+      \ 'h' : [':GitGutterLineHighlightsToggle'    , 'highlight hunks'],
+      \ 'H' : ['<Plug>(GitGutterPreviewHunk)'      , 'preview hunk'],
+      \ 'i' : [':Gist -b'                          , 'post gist'],
+      \ 'j' : ['<Plug>(GitGutterNextHunk)'         , 'next hunk'],
+      \ 'k' : ['<Plug>(GitGutterPrevHunk)'         , 'prev hunk'],
+      \ 'l' : [':Git log'                          , 'log'],
+      \ 'm' : ['<Plug>(git-messenger)'             , 'message'],
+      \ 'p' : [':Git push'                         , 'push'],
+      \ 'P' : [':Git pull'                         , 'pull'],
+      \ 'r' : [':GRemove'                          , 'remove'],
+      \ 's' : ['<Plug>(GitGutterStageHunk)'        , 'stage hunk'],
+      \ 'S' : [':CocCommand fzf-preview.GitStatus' , 'status'],
+      \ 't' : [':GitGutterSignsToggle'             , 'toggle signs'],
+      \ 'u' : ['<Plug>(GitGutterUndoHunk)'         , 'undo hunk'],
+      \ 'v' : [':GV'                               , 'view commits'],
+      \ 'V' : [':GV!'                              , 'view buffer commits'],
+      \ }
 
 
 "___________________________________________________________________
