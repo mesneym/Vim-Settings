@@ -35,6 +35,7 @@ Plug 'justinmk/vim-sneak'
 Plug 'ryanoasis/vim-devicons'
 
 
+"Plug 'daeyun/vim-matlab' 
 "Plug 'Shougo/neoinclude.vio'
 "Plug 'neomake/neomake'
 "Plug 'kien/ctrlp.vim'
@@ -141,12 +142,12 @@ let g:startify_change_to_vcs_root = 1
 let g:startify_session_persistence = 1
 let g:startify_enable_special = 0
 let g:startify_session_dir = '~/.config/nvim/session'
-"nnoremap <C-s> :Startify<cr>
+nnoremap <C-s> :Startify<cr>
 
 
 
 "_______________________________
-"     Which Key
+"       Which Key
 "_______________________________
 call which_key#register(',', "g:which_key_map")
 nnoremap <silent> <leader>           :<c-u>WhichKey ','<CR>
@@ -155,7 +156,6 @@ nnoremap <silent> <localleader>      :<c-u>WhichKey  '<space>'<CR>
 vnoremap <silent> <localleader>      :<c-u>WhichKeyVisual '<space>'<CR>
 
 let g:which_key_map =  {}
-let g:which_key_map.t = {}   
 let g:which_key_sep = '→'
 let g:which_key_use_floating_win = 0
 
@@ -454,6 +454,7 @@ let g:which_key_map.t = {
       \ 'r' : [':FloatermNew ranger'                            , 'ranger'],
       \ 'y' : [':FloatermNew ytop'                              , 'ytop'],
       \ 's' : [':FloatermNew ncdu'                              , 'ncdu'],
+      \ 't' : [':FloatermToggle'                                , 'toggle'],
       \ }
 
 """"""""""""""""""""""
@@ -618,8 +619,7 @@ let g:which_key_map.S = {
       \ 'c' : [':SClose'          , 'Close Session']  ,
       \ 'd' : [':SDelete'         , 'Delete Session'] ,
       \ 'l' : [':SLoad'           , 'Load Session']     ,
-      \ 's' : [':Startify'        , 'Start Page']     ,
       \ 'S' : [':SSave'           , 'Save Session']   ,
       \ }
-
+"\ 's' : [':Startify'        , 'Start Page']     ,
 
