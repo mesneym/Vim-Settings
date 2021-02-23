@@ -1,4 +1,4 @@
-"
+
 "###########################################################################################
 "											PLUGINS
 "############################################################################################
@@ -104,7 +104,7 @@ vnoremap > >gv
 
 autocmd FileType python nnoremap <buffer> <F5>  :w<CR>:!python % <CR>
 "autocmd filetype cpp nnoremap <buffer> <F5> :w <bar> !g++ -std=c++11 -O2 -Wall % -o %:r.out && %:r.out <cr>
-autocmd filetype cpp nnoremap <buffer> <F5> :w <bar> !g++ -std=c++11 -O2 -Wall % -o main && %:p:h/main <cr>
+autocmd filetype cpp nnoremap <buffer> <F5> :w <bar> !g++ -std=c++11 -O2 -Wall % -ggdb -o main && %:p:h/main <cr>
 
 
 "#############################################################################################
@@ -598,20 +598,27 @@ let g:which_key_map.g = {
 " d is for debug
 let g:which_key_map.d = {
       \ 'name' : '+debug' ,
-      \ 'b' : ['<Plug>VimspectorToggleBreakpoint'              , 'breakpoint'],
       \ 'B' : ['<Plug>VimspectorToggleConditionalBreakpoint'   , 'conditional breakpoint'],
       \ 'c' : ['<Plug>VimspectorRunToCursor'                   , 'run to cursor'],
-      \ 'd' : ['<Plug>VimspectorContinue'                      , 'continue'],
       \ 'f' : ['<Plug>VimspectorAddFunctionBreakpoint'         , 'function breakpoint'],
+      \ 'p' : ['<Plug>VimspectorPause'                         , 'pause'],
+      \ 'r' : ['<Plug>VimspectorRestart'                       , 'restart'],
+      \ 's' : ['<Plug>VimspectorStop'                          , 'stop'],
+      \ 'd' : ['<Plug>VimspectorContinue'                      , 'start/continue'],
+      \ 'x' : [':VimspectorReset'                              , 'close'],
       \ 'o' : ['<Plug>VimspectorStepOver'                      , 'step over'],
       \ 'O' : ['<Plug>VimspectorStepOut'                       , 'step out'],
       \ 'i' : ['<Plug>VimspectorStepInto'                      , 'step into'],
-      \ 'p' : ['<Plug>VimspectorPause'                         , 'pause'],
-      \ 'r' : ['<Plug>VimspectorRestart'                       , 'restart'],
-      \ 'S' : ['<Plug>VimspectorStop'                          , 'stop'],
-      \ 's' : [':call vimspector#Launch()'                     , 'start'],
-      \ 'C' : [':VimspectorReset'                              , 'close'],
+      \ 'b' : ['<Plug>VimspectorToggleBreakpoint'              , 'breakpoint'],
+      \ 'I' : ['<Plug>VimspectorBalloonEval'                   , 'insepect under cursor'],
+      \ 'S' : ['<Plug>VimspectorShowOutput'                    , 'show output'],
+      \ 'C' : [':call vimspector#ClearBreakpoints()'           , 'clear allbreakpoints']
       \ }
+
+nnoremap <leader>de    :VimspectorEval
+nnoremap <leader>dw    :VimspectorWatch
+xmap     <Leader>dI    <Plug>VimspectorBalloonEval
+
 
 "___________________________________________________________________
 "                        Project management
@@ -623,5 +630,6 @@ let g:which_key_map.S = {
       \ 'l' : [':SLoad'           , 'Load Session']     ,
       \ 'S' : [':SSave'           , 'Save Session']   ,
       \ }
+
 "\ 's' : [':Startify'        , 'Start Page']     ,
 
