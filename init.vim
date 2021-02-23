@@ -10,9 +10,10 @@ call plug#begin()
 Plug 'jiangmiao/auto-pairs'
 Plug 'simeji/winresizer'
 Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/nerdtree' 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'scrooloose/nerdtree' 
 Plug 'morhetz/gruvbox'
+Plug 'puremourning/vimspector'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-scripts/DoxygenToolkit.vim'
 Plug 'tpope/vim-fugitive'
@@ -27,13 +28,12 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn insrtall'  }
 Plug '907th/vim-auto-save'
 Plug 'voldikss/vim-floaterm'
 Plug 'liuchengxu/vim-which-key'
+Plug 'airblade/vim-rooter'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'airblade/vim-rooter'
 Plug 'mhinz/vim-startify'
 Plug 'justinmk/vim-sneak'
 Plug 'ryanoasis/vim-devicons'
-
 
 "Plug 'daeyun/vim-matlab' 
 "Plug 'Shougo/neoinclude.vio'
@@ -73,21 +73,18 @@ let maplocalleader = "\\"
 inoremap    jk              <ESC>
 nnoremap    <leader>ev      :vsplit $MYVIMRC<CR>
 nnoremap    <leader>sv      :source $MYVIMRC<CR>
-inoremap    <leader>.       <ESC>$a
-nnoremap    <leader>.        A
-nnoremap    <leader>w        :wall<CR>
-nnoremap    <leader>fq       :q!<CR>
-nnoremap    gb               gT
-nnoremap    0                ^
+nnoremap    <leader>w       :wall<CR>
+nnoremap    <leader>fq      :q!<CR>
+nnoremap    gb              gT
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
-nnoremap <leader>dk :m .+1<CR>==
-nnoremap <leader>fj :m .-2<CR>==
-vnoremap <leader>dk :m '>+1<CR>gv=gv
-vnoremap <leader>fj :m '<-2<CR>gv=gv
-nnoremap <leader>vt :vsp<CR> :term <CR>a
+"nnoremap <leader>dk :m .+1<CR>==
+"nnoremap <leader>fj :m .-2<CR>==
+"vnoremap <leader>dk :m '>+1<CR>gv=gv
+"vnoremap <leader>fj :m '<-2<CR>gv=gv
+"nnoremap <leader>vt :vsp<CR> :term <CR>a
 "nnoremap <leader>tt :sp<CR> :term <CR>a
 "tnoremap <leader>tt <C-\><C-n> :bd!<CR>
 tnoremap jk         <C-\><C-n> 
@@ -97,8 +94,8 @@ tnoremap <C-k> <C-\><C-N><C-w>k
 tnoremap <C-j> <C-\><C-N><C-w>j
 
 "Easy caps"
-inoremap <leader>U  <ESC>viwUi
-nnoremap <leader>U  viwU<ESC>
+"inoremap <leader>U  <ESC>viwUi
+"nnoremap <leader>U  viwU<ESC>
  
 "Better tabbing"
 vnoremap < <gv          
@@ -106,14 +103,19 @@ vnoremap > >gv
 
 
 autocmd FileType python nnoremap <buffer> <F5>  :w<CR>:!python % <CR>
+"autocmd filetype cpp nnoremap <buffer> <F5> :w <bar> !g++ -std=c++11 -O2 -Wall % -o %:r.out && %:r.out <cr>
+autocmd filetype cpp nnoremap <buffer> <F5> :w <bar> !g++ -std=c++11 -O2 -Wall % -o main && %:p:h/main <cr>
 
 
 "#############################################################################################
 "                                GENERAL PLUGIN CONFIGURATION
 "#############################################################################################
+
+
 "_______________________________
-"      Vim-devicons
+"       Vim rooter
 "_______________________________
+let g:rooter_patterns = ['.git','.gitignore', 'Makefile', '*.sln', 'build/env.sh']
 
 "_______________________________
 "      Sneak
@@ -133,12 +135,14 @@ let g:startify_lists = [
 
 let g:startify_bookmarks = [
             \ { 'i': '~/.config/nvim/init.vim' },
+            \ { 'c': '~/.config/nvim/coc-settings.json' },
             \ { 'b': '~/.bashrc' },
             \ ]
 
 let g:startify_session_autoload = 1
 let g:startify_session_delete_buffers = 1
 let g:startify_change_to_vcs_root = 1
+let g:startify_change_to_dir = 0
 let g:startify_session_persistence = 1
 let g:startify_enable_special = 0
 let g:startify_session_dir = '~/.config/nvim/session'
@@ -192,7 +196,7 @@ let g:winresizer_start_key = '<C-e>'
 "_______________________________
 "      Lens
 "________________________________
-nnoremap <leader>rs  :call lens#toggle()<CR>
+nnoremap <C-a>  :call lens#toggle()<CR>
 let g:lens#disabled = 1
 let g:lens#height_resize_min = 10
 let g:lens#width_resize_min = 60
@@ -212,7 +216,7 @@ let g:mkdp_auto_close = 1
 let g:mkdp_auto_start = 0
 let g:mkdp_refresh_slow = 1
 
-nmap <leader>ma <Plug>MarkdownPreview
+nnoremap <C-m>  <Plug>MarkdownPreview
 
 "_______________________________
 "        Fzf
@@ -463,8 +467,6 @@ let g:which_key_map.t = {
 :call extend(g:which_key_map.t, {    'm' : ['o<ESC>k,vtjk,vtjk<C-h><C-h>,fqi'                , 'multi-term'],
                                    \ 'dm': [',fq,fq'                                         , 'del-multi_term'],
                                 \})
-      
-
 
 
 
@@ -594,22 +596,22 @@ let g:which_key_map.g = {
 "___________________________________________________________________
 
 " d is for debug
-"let g:which_key_map.d = {
-      "\ 'name' : '+debug' ,
-      "\ 'b' : ['<Plug>VimspectorToggleBreakpoint'              , 'breakpoint'],
-      "\ 'B' : ['<Plug>VimspectorToggleConditionalBreakpoint'   , 'conditional breakpoint'],
-      "\ 'c' : ['<Plug>VimspectorRunToCursor'                   , 'run to cursor'],
-      "\ 'd' : ['<Plug>VimspectorContinue'                      , 'continue'],
-      "\ 'f' : ['<Plug>VimspectorAddFunctionBreakpoint'         , 'function breakpoint'],
-      "\ 'm' : [':MaximizerToggle'                              , 'maximize window'],
-      "\ 'o' : ['<Plug>VimspectorStepOver'                      , 'step over'],
-      "\ 'O' : ['<Plug>VimspectorStepOut'                       , 'step out'],
-      "\ 'i' : ['<Plug>VimspectorStepInto'                      , 'step into'],
-      "\ 'p' : ['<Plug>VimspectorPause'                         , 'pause'],
-      "\ 'r' : ['<Plug>VimspectorRestart'                       , 'restart'],
-      "\ 's' : ['<Plug>VimspectorStop'                          , 'stop'],
-      "\ }
-
+let g:which_key_map.d = {
+      \ 'name' : '+debug' ,
+      \ 'b' : ['<Plug>VimspectorToggleBreakpoint'              , 'breakpoint'],
+      \ 'B' : ['<Plug>VimspectorToggleConditionalBreakpoint'   , 'conditional breakpoint'],
+      \ 'c' : ['<Plug>VimspectorRunToCursor'                   , 'run to cursor'],
+      \ 'd' : ['<Plug>VimspectorContinue'                      , 'continue'],
+      \ 'f' : ['<Plug>VimspectorAddFunctionBreakpoint'         , 'function breakpoint'],
+      \ 'o' : ['<Plug>VimspectorStepOver'                      , 'step over'],
+      \ 'O' : ['<Plug>VimspectorStepOut'                       , 'step out'],
+      \ 'i' : ['<Plug>VimspectorStepInto'                      , 'step into'],
+      \ 'p' : ['<Plug>VimspectorPause'                         , 'pause'],
+      \ 'r' : ['<Plug>VimspectorRestart'                       , 'restart'],
+      \ 'S' : ['<Plug>VimspectorStop'                          , 'stop'],
+      \ 's' : [':call vimspector#Launch()'                     , 'start'],
+      \ 'C' : [':VimspectorReset'                              , 'close'],
+      \ }
 
 "___________________________________________________________________
 "                        Project management
