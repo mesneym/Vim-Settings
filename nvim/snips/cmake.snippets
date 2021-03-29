@@ -1,0 +1,69 @@
+# A valid snippet should starts with:
+#
+#		snippet trigger_word [ "description" [ options ] ]
+#
+# and end with:
+#
+#		endsnippet
+#
+# Snippet options:
+#
+#		b - Beginning of line.
+#		i - In-word expansion.
+#		w - Word boundary.
+#		r - Regular expression
+#		e - Custom context snippet
+#		A - Snippet will be triggered automatically, when condition matches.
+#
+# Basic example:
+#
+#		snippet emitter "emitter properties" b
+#		private readonly ${1} = new Emitter<$2>()
+#		public readonly ${1/^_(.*)/$1/}: Event<$2> = this.$1.event
+#		endsnippet
+#
+# Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
+
+snippet pc "project creation" b
+cmake_minimum_required(VERSION 3.5)
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/")
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_BUILD_TYPE Debug)
+
+project(${1} VERSION 1.0)
+
+find_package(SDL2 REQUIRED)
+find_package(SDL2_image REQUIRED)
+find_package(SDL2_ttf REQUIRED)
+
+include_directories(\${SDL2_INCLUDE_DIRS} \${SDL2IMAGE_INCLUDE_DIRS} \${SDL2TTF_INCLUDE_DIRS})
+
+file(GLOB_RECURSE SRC_FILES src/*.cpp CONFIGURE_DEPENDS)
+add_executable(\${PROJECT_NAME} \${PROJECT_NAME}.cpp \${SRC_FILES})
+
+target_include_directories(\${PROJECT_NAME} PUBLIC \${CMAKE_CURRENT_SOURCE_DIR}/include)
+string(STRIP \${SDL2_LIBRARIES} SDL2_LIBRARIES)
+target_link_libraries(\${PROJECT_NAME} \${SDL2_LIBRARIES} \${SDL2IMAGE_LIBRARY} \${SDL2TTF_LIBRARY})
+
+
+add_subdirectory(lib/googletest)
+add_subdirectory(test)
+endsnippet
+
+snippet gt "googletest"
+set(BINARY \${CMAKE_PROJECT_NAME}_test)
+message("CMAKE_PROJECT_NAME = \${CMAKE_PROJECT_NAME}")
+
+file(GLOB_RECURSE TEST_SOURCES LIST_DIRECTORIES false *.h *.cpp)
+
+set(SOURCES \${TEST_SOURCES})
+
+add_executable(\${BINARY} \${TEST_SOURCES})
+add_test(NAME \${BINARY} COMMAND \${BINARY})
+
+target_include_directories(\${BINARY} PUBLIC \${CMAKE_CURRENT_SOURCE_DIR}/../include)
+target_link_libraries(\${BINARY} PUBLIC gtest)
+endsnippet
+
+

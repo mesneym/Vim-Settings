@@ -1,0 +1,27 @@
+{
+    "languageserver": {
+        "ccls": {
+            "command": "ccls",
+            "filetypes": ["c","cpp","objc","objcpp"],
+            "rootPatterns": [".ccls", "compile_commands.json", ".vim/", ".git/",".hg/"],
+            "initializationOptions": {
+                "cache": {
+                    "directory": "/tmp/ccls"
+                }
+            }
+        }
+    },
+    "list.normalMappings": {
+        "<C-c>": "do:exit"
+   },
+   "list.insertMappings": {
+       "<C-c>": "do:exit"
+   },
+  "explorer.width": 30,
+  "explorer.icon.enableNerdfont": true,
+  "explorer.previewAction.onHover": false,
+  "explorer.keyMappings.global": {
+    "v" : "open:vsplit"
+  },
+   "snippets.userSnippetsDirectory":"~/.config/nvim/snips"
+}
