@@ -36,7 +36,8 @@ Plug 'justinmk/vim-sneak'
 Plug 'ryanoasis/vim-devicons'
 Plug 'honza/vim-snippets'
 Plug 'alepez/vim-gtest'
-
+Plug 'vimwiki/vimwiki'
+Plug 'tools-life/taskwiki'
 
 Plug 'cdelledonne/vim-cmake'
 if has("nvim")
@@ -67,6 +68,11 @@ set splitright
 set splitbelow
 set nowrap
 set clipboard=unnamedplus
+
+"settings for vimwiki
+set nocompatible
+filetype plugin on
+syntax on
 
 
 "#############################################################################################
@@ -118,6 +124,20 @@ autocmd filetype cpp nnoremap <buffer> <F5> :!./Debug/main <CR>
 "#############################################################################################
 "                                GENERAL PLUGIN CONFIGURATION
 "#############################################################################################
+
+"_______________________________
+"      Vim Wiki
+"_______________________________
+let g:vimwiki_list = [{'path':'/home/aobeng/vimwiki','syntax':'markdown','ext':'.md'}]
+let g:vimwiki_ext2syntax = {'.md':'markdown','.markdown':'markdown','.mdown':'markdown'}
+let g:vimwiki_markdown_link_ext=1
+
+"_______________________________
+"     Task Wiki
+"_______________________________
+"
+let g:taskwiki_maplocalleader="\\t"
+
 
 "_______________________________
 "      NerdCommenter
@@ -430,7 +450,7 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 "______________________________________
 let g:tex_flavor  = 'latex'
 let g:vimtex_view_method = 'zathura'
-let g:vimtex_latexmk_continuous = 1
+"let g:vimtex_latexmk_continuous = 1
 let g:vimtex_compiler_progname = 'nvr'
 
 
@@ -541,7 +561,7 @@ let g:which_key_map.s = {
       \ 'name' : '+search' ,
       \ '/' : [':History/'     , 'history'],
       \ ';' : [':Commands'     , 'commands'],
-      \ 'a' : [':Ag'           , 'text Ag'],
+      \ 't' : [':Ag'           , 'text Ag'],
       \ 'b' : [':BLines'       , 'current buffer'],
       \ 'B' : [':Buffers'      , 'open buffers'],
       \ 'c' : [':Commits'      , 'commits'],
@@ -557,7 +577,7 @@ let g:which_key_map.s = {
       \ 'p' : [':Helptags'     , 'help tags'] ,
       \ 'P' : [':Tags'         , 'project tags'],
       \ 'S' : [':Colors'       , 'color schemes'],
-      \ 't' : [':Rg'           , 'text Rg'],
+      \ 'r' : [':Rg'           , 'text Rg'],
       \ 'T' : [':BTags'        , 'buffer tags'],
       \ 'w' : [':Windows'      , 'search windows'],
       \ 'y' : [':Filetypes'    , 'file types'],
