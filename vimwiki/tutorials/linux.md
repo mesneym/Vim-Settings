@@ -21,3 +21,9 @@ Any folder can be used as a mount point but these are normally used
 | mount *device* *mountpoint* | maps a device volume to a mount point |
 | umount                      | unmount a device.Opp of mount         |
 | df -h                       | storage used on mounted file system   |
+
+
+
+# Text formatting 
+* [Awk](awk.md)
+

@@ -84,4 +84,5 @@ To add code to artifactory repo
 | conan remote list                | see list of remotes             |
 
 
+## conan search/inspect
 

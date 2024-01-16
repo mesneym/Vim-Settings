@@ -24,4 +24,5 @@ MQTT over websocket                                    MQTT
    
 
 
-
+# Clean Session, Persistence, Retained messages
+https://pagefault.blog/2020/02/05/how-to-set-up-persistent-storage-for-mosquitto-mqtt-broker/#:~:text=By%20default%20the%20number%20of,the%20size%20is%20not%20limited
